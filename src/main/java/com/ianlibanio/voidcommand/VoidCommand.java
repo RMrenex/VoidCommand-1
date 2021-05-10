@@ -55,7 +55,7 @@ public abstract class VoidCommand extends org.bukkit.command.Command {
     public boolean execute(CommandSender sender, String label, String[] args) {
         val executor = command.executor();
 
-        if (!checkSender(executor, sender)) return true;
+        if (!checkSender(executor, sender, command.permission())) return true;
 
         if (sender instanceof Player) this.player = (Player) sender;
 
@@ -113,12 +113,12 @@ public abstract class VoidCommand extends org.bukkit.command.Command {
 
     @SneakyThrows
     private void invoke(Method method, Context context, Executor executor) {
-        if (checkSender(executor, context.sender())) {
+        if (checkSender(executor, context.sender(), method.getAnnotation(Sub.class).permission())) {
             method.invoke(this, context);
         }
     }
 
-    private boolean checkSender(Executor executor, CommandSender sender) {
+    private boolean checkSender(Executor executor, CommandSender sender, String permission) {
         val isPlayer = sender instanceof Player;
 
         if (executor.equals(Executor.PLAYER) && !isPlayer) {
@@ -131,8 +131,8 @@ public abstract class VoidCommand extends org.bukkit.command.Command {
             return false;
         }
 
-        if (!sender.hasPermission(command.permission())) {
-            sender.sendMessage(ChatColor.RED + "You don't have the permission '" + ChatColor.BOLD + command.permission() + ChatColor.RED + "' to use this command!");
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(ChatColor.RED + "You don't have the permission '" + ChatColor.BOLD + permission + ChatColor.RED + "' to use this command!");
             return false;
         }
 
