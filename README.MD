@@ -6,7 +6,44 @@ Void Command is an API designed for Spigot developers that facilitates the creat
 
 ## Installation
 
-You can download the .jar into the [releases page](https://github.com/ianlibanio/VoidCommand/releases/), or use JitPack (soon).
+You can download the .jar into the [releases page](https://github.com/ianlibanio/VoidCommand/releases/), or use JitPack.
+
+### Gradle
+
+Add it at your root `build.gradle` at the end of repositories:
+```gradle
+repositories {
+	...
+	maven { url 'https://jitpack.io' }
+}
+```
+Add the `dependency`:
+```gradle
+dependencies {
+	implementation 'com.github.ianlibanio:VoidCommand:0.1'
+}
+```
+
+### Maven
+Add the JitPack repository to your `build` file:
+```xml
+<repositories>
+	<repository>
+		 <id>jitpack.io</id>
+		 <url>https://jitpack.io</url>
+	</repository>
+</repositories>
+```
+Add the `dependency`:
+```xml
+<dependency>
+	<groupId>com.github.ianlibanio</groupId>
+	<artifactId>VoidCommand</artifactId>
+	<version>0.1</version>
+</dependency>
+```
+
+Other options available at: <https://jitpack.io/#ianlibanio/VoidCommand/0.1>.
 
 ## Wiki
 
