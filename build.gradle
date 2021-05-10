@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id "com.github.johnrengelman.shadow" version "5.2.0"
-    id "io.freefair.lombok" version "5.1.1"
+    id "io.freefair.lombok" version "6.0.0-m2"
 }
 
 group = 'com.ianlibanio.voidcommand'
@@ -9,10 +9,20 @@ version = '0.1'
 
 repositories {
     mavenCentral()
+
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+        content {
+            includeGroup 'org.spigotmc'
+        }
+    }
+
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
 
 dependencies {
-    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
 }
 
 shadowJar {

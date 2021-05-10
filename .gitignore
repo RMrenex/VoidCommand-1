@@ -177,4 +177,7 @@ gradle-app.setting
 # Libs
 libs/
 
+# Discord
+.idea/discord.xml
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,intellij,java,gradle
