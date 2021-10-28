@@ -131,7 +131,7 @@ public abstract class VoidCommand extends org.bukkit.command.Command {
             return false;
         }
 
-        if (!sender.hasPermission(permission)) {
+        if (!sender.hasPermission(permission) && !permission.equals("")) {
             sender.sendMessage(ChatColor.RED + "You don't have the permission '" + ChatColor.BOLD + permission + ChatColor.RED + "' to use this command!");
             return false;
         }
